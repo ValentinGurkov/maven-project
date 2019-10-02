@@ -38,6 +38,7 @@ pipeline {
 
               stage ("Deploy to Production"){
                   steps {
+                     bat "ls -la"
                      bat "scp -v -i  C:/Program Files (x86)/Jenkins/tomcat.pem **/target/*.warp.war ec2-user@52.14.139.125:/var/lib/tomcat8/webapps"
                   }
               }
