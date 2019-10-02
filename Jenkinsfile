@@ -32,12 +32,14 @@ pipeline {
           parallel{
               stage ('Deploy to Staging'){
                   steps {
+                      bat "chmod 400 tomcat.pem"
                       bat "scp -v -i tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                   }
               }
 
               stage ("Deploy to Production"){
                   steps {
+                       bat "chmod 400 tomcat.pem"
                       bat "scp -v -i tomcat.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                   }
               }
