@@ -16,33 +16,32 @@ pipeline {
   }
 
   stages {
-
-    stage('Build') {
-      steps {
-        bat 'mvn clean package'
-      }
-      post {
-        success {
-          echo 'Now Archiving...'
-          archiveArtifacts artifacts: '**/target/*.war'
-        }
-      }
-
-    }
-
-    stage('Deployments') {
-      parallel {
-        stage('Deploy to Staging') {
+      stage('Build'){
           steps {
-            bat "scp -i /Desktop/tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat8/webapps"
+              bat 'mvn clean package'
           }
-        }
-        stage('Deploy to Production') {
-          steps {
-            bat "scp -i /Desktop/tomcat.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
+          post {
+              success {
+                  echo 'Now Archiving...'
+                  archiveArtifacts artifacts: '**/target/*.war'
+              }
           }
-        }
       }
-    }
+
+      stage ('Deployments'){
+          parallel{
+              stage ('Deploy to Staging'){
+                  steps {
+                      bat "winscp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                  }
+              }
+
+              stage ("Deploy to Production"){
+                  steps {
+                      bat "winscp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                  }
+              }
+          }
+      }
   }
 }
