@@ -38,7 +38,7 @@ pipeline {
 
               stage ("Deploy to Production"){
                   steps {
-                     bat "scp -v -i  'C\\tomcat.pem' **/target/*.warp.war ec2-user@52.14.139.125:/var/lib/tomcat8/webapps"
+                     bat "scp -v -i  'C\\tomcat.pem' **\\target\\*.warp.war ec2-user@52.14.139.125:\\var\\lib\\tomcat8\\webapps"
                   }
               }
           }
