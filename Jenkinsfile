@@ -24,11 +24,11 @@
 pipeline {
   agent any
 
-// tools {
-//   maven 'localMaven'
-//   jdk 'localJDK'
-// }
-//
+ tools {
+   maven 'localMaven'
+   jdk 'localJDK'
+ }
+
   parameters {
     string(name:'tomcat_dev', defaultValue:'18.223.22.16', description: 'Staging Server')
   }
