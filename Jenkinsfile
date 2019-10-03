@@ -53,7 +53,7 @@ pipeline {
 
       stage ('Deploy to Staging'){
           steps {
-              bat "echo y|pscp -i \"C:\my-key-pair.ppk\" \"C:\audioe.txt\" ec2-user@18.223.22.16:/home/ec2-user/Sample_file.txt"
+              bat "echo y|pscp -i \"C:\path\my-key-pair.ppk\" \"C:\path\Sample_file.txt\" ec2-user@public_dns:/home/ec2-user/Sample_file.txt"
               
               
               
