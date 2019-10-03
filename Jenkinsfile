@@ -52,7 +52,7 @@ pipeline {
 
       stage ('Deploy to Staging'){
           steps {
-            sh "scp -o StrickHostKeyChecking=no -i /home/green/ssh/tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+            sh "scp -o StrictHostKeyChecking=no -i /home/green/ssh/tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
               //bat "scp -v -i  /c:/tomcat.ppk **/target/*.warp.war ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
 
               //bat "ls -la"
