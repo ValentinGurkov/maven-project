@@ -54,7 +54,7 @@ pipeline {
       stage ('Deploy to Staging'){
           steps {
               bat "ls -la"
-              bat "echo y|pscp -i \"C:\\tomcat.ppk\" \"**\\target\\*.war\" ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
+              bat "echo y|pscp -i \"C:\\tomcat.ppk\" \".\\**\\target\\*.war\" ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
           }
       }
   }
