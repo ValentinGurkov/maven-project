@@ -52,8 +52,9 @@ pipeline {
 
       stage ('Deploy to Staging'){
           steps {
+            bat "ls /c:/"
             //sh "scp -o StrictHostKeyChecking=no -i /home/green/ssh/tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
-            bat "scp -o StrictHostKeyChecking=no -i  \"/c:/tomcat.pem\" **/target/*.warp.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+            bat "scp -o StrictHostKeyChecking=no -i /c:/tomcat.pem **/target/*.warp.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
           }
       }
   }
