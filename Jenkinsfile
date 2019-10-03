@@ -53,7 +53,7 @@ pipeline {
 
       stage ('Deploy to Staging'){
           steps {
-            scp "scp -v -i  /home/ssh/tomcat.pem **/target/*A.war ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
+            sh "scp -v -i  /home/ssh/tomcat.pem **/target/*A.war ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
               //bat "scp -v -i  /c:/tomcat.ppk **/target/*.warp.war ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
 
               //bat "ls -la"
