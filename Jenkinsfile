@@ -53,7 +53,12 @@ pipeline {
 
       stage ('Deploy to Staging'){
           steps {
-              bat "pscp -v -i  /c:/tomcat.pem **/target/*.warp.war ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
+              bat "echo y|pscp -i \"C:\my-key-pair.ppk\" \"C:\audioe.txt\" ec2-user@18.223.22.16:/home/ec2-user/Sample_file.txt"
+              
+              
+              
+              
+              //ec2-user@18.223.22.16:/var/lib/tomcat7/webapps"
           }
       }
   }
