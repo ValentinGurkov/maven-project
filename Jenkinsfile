@@ -53,7 +53,7 @@ pipeline {
 
       stage ('Deploy to Staging'){
           steps {
-              bat "echo y|pscp -i \"C:\\tomcat.pem\" \"C:\\audio.txt\" ec2-user@18.223.22.16:/home/ec2-user/audio.txt"
+              bat "echo y|pscp -i \"C:\\tomcat.pem\" \"C:\\test\\audio.txt\" ec2-user@18.223.22.16:/home/ec2-user/audio.txt"
               
               
               
